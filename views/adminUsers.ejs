@@ -1,0 +1,15 @@
+<% include header%>
+    </head>
+    <body class=" grey lighten-2">
+        <% include navBar %>
+        <h1>Unidades Curriculares </h1>
+        <% if(users.length === 0){ %>
+            <p>Nao ha unidades curriculares cadastradas!</p>
+        <%}else{
+            for(var chave in users){%>
+                <li><%=users[chave].idutilizador + " - " + users[chave].permisao + " - " + users[chave].email %> </li>
+            <%}
+        } %>
+        <a href="/admin/users/add">Adicionar</a>
+    </body>
+</html>

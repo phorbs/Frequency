@@ -1,0 +1,121 @@
+<% include header%>
+        <script>
+            $(document).ready(function() {
+                $('select').material_select();
+            });
+        </script>
+    </head>
+    <body class=" grey lighten-2">
+        <%include navBar%>
+        <div class="container white z-depth-2">
+            <div class="row center">
+                <h2 class="header">Editar Teste</h2>
+                <div class="divider"></div>
+            </div>
+            <div class="row center">
+                <div class="col s8 offset-s2">
+                    <% if(ucs == true && ucs.length == 0){%>
+                        <p>Nao ha unidades curriculares disponiveis. Consulte a equipe tecnica</p>
+                    <%} else{%>
+                        <form action = "/tests/edit" method = "POST" >
+                            <div class="input-field col s6">
+                                    <input disabled id="Identificação" type="text" class="validate" name="id"  value="<%= teste[0].idprova %>">
+                                    <input id="Identificação" type="hidden" class="validate" name="id"  value="<%= teste[0].idprova %>">
+                                    <label for="Identificação">Identificação</label>
+                            </div>
+                            <%if(teste[0].estado == 1){ %>
+                            <div class="input-field col s6">
+                                    <input disabled id="Estado" type="text" class="validate" name="text" value="Em andamento">
+                                    <label for="Estado">Estado</label>
+                            </div>
+                            <% } else { %>
+                                <div class="input-field col s6">
+                                        <input disabled id="Estado" type="text" class="validate" name="text" value="Finalizado">
+                                        <label for="Estado">Estado</label>
+                                </div>
+                            <%} %>
+
+                            <%if(teste[0].estado == 1){ %>
+                            <div class="input-field col s6">
+                                    <input id="tipo" type="text" class="validate" name="tipo"  value="<%= teste[0].tipo %>">
+                                    <label for="tipo">Tipo</label>
+                            </div>
+                            <div class="input-field col s6">
+                                    <input id="data" type="text" class="datepicker" name="data" value="<%= teste[0].data %>">
+                                    <label for="data">Data</label>
+                            </div>
+                            <div class="input-field col s6">
+                                    <input id="sala" type="text" class="validate" name="sala" value="<%= teste[0].sala %>">
+                                    <label for="sala">Sala</label>
+                            </div>
+                            <div class="input-field col s6">
+                                    <input id="lotacaoMaxima" type="number" class="validate" name="lotacaoMaxima" value="<%= teste[0].lotacaoMaxima %>">
+                                    <label for="lotacaoMaxima">Lotacao Maxima</label>
+                            </div>
+                            <div class="input-field col s6">
+                                <select name="id_uc">
+                                        <% for(var chave in ucs){%>
+                                            <option value="<%= ucs[chave].iduc %>"><%= ucs[chave].unidadeCurricular %></option>
+                                        <% }%>
+                                </select>
+                                <label>Unidade Curricular</label>
+                            </div>
+                            <div class="col s6 center">
+                                    <a href="/tests/cancelar/<%=teste[0].idprova %>" class="waves-effect waves-light btn red">Cancelar Teste</a>
+                            </div>
+                            <div class ="col s12">
+                                <br>
+                                <input type="submit" value="Salvar Alterações" class="waves-effect waves-light btn">
+                            </div>
+                            <!--Alterações para caso já tenha ocorrido-->
+                            <%}else{ %>
+                            <div class="input-field col s6">
+                                    <input id="tipo" type="text" class="validate" name="tipo"  value="<%= teste[0].tipo %>">
+                                    <label for="tipo">Tipo</label>
+                            </div>
+                            <div class="input-field col s6">
+                                    <input disabled id="data" type="date" class="validate" name="data" value="<%= teste[0].data %>">
+                                    <label for="data">Data</label>
+                            </div>
+                            <div class="input-field col s6">
+                                    <input id="sala" type="text" class="validate" name="sala" value="<%= teste[0].sala %>">
+                                    <label for="sala">Sala</label>
+                            </div>
+                            <div class="input-field col s6">
+                                    <input id="lotacaoMaxima" type="number" class="validate" name="lotacaoMaxima" value="<%= teste[0].lotacaoMaxima %>">
+                                    <label for="lotacaoMaxima">Lotacao Maxima</label>
+                            </div>
+                            <div class="input-field col s6">
+                                <select disabled name="id_uc">
+                                        <% for(var chave in ucs){%>
+                                            <option value="<%= ucs[chave].iduc %>"><%= ucs[chave].unidadeCurricular %></option>
+                                        <% }%>
+                                </select>
+                                <label>Unidade Curricular</label>
+                            </div>
+                            <div class ="col s12">
+                                <br>
+                                <input type="submit" value="Salvar Alterações" class="waves-effect waves-light btn">
+                            </div>
+                           <% } %>
+                        </form>
+                    <%}%>
+                </div>
+            </div>
+            <div class="row center">
+                <br>
+                <%if(teste[0].estado == 1){ %>
+                    <div class="divider"></div>
+                    <p >Marcar este teste como já finalizado?</p>
+                    <a href="/tests/desativar/<%=teste[0].idprova %>" class="waves-effect waves-light btn green">Marcar</a>
+                <% }else if(teste[0].estado == 0){%>
+                    <div class="divider"></div>
+                    <p >Deseja reativar o teste?</p>
+                    <a href="/tests/ativar/<%=teste[0].idprova %>" class="waves-effect waves-light btn green">Marcar</a>
+                <%} %>
+                    
+            </div>
+            <br>
+        </div>
+    </body>
+</html>

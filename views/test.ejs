@@ -1,0 +1,20 @@
+<% include header%>
+    </head>
+    <body>
+        <%include navBar %>
+        <div class="container">
+            <% if(tests === undefined){ %>
+                <p>Nao foi possivel carregar o teste!</p>
+            <%}else{
+                    if(permission === 'A'){ %>
+                    <ul class="collection with-header">
+                        <li class="collection-header"><h4>First Names</h4></li>
+                        <%for(var chave in tests){ %>
+                            <li class="collection-item"><%=tests[chave].unidadeCurricular + " " + tests[chave].data %> <a href="/tests/inscrever/<%=tests[chave].idprova %>"</a>Inscrever</a><br></li>
+                        <%} %>
+                    </ul>
+                <%}
+            } %>
+        </div>
+    </body>
+</html>

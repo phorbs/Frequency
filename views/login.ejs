@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+    <head>
+
+    <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-rc.2/css/materialize.min.css">
+
+    <!-- Compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-rc.2/js/materialize.min.js"></script>
+            
+    </head>
+    <body class=" grey lighten-2">
+        <div class="container ">
+            <div class="row">
+                <br>
+                <div class="col s6 offset-s3 white z-depth-2">
+                        <div class="row center">
+                                <h4>Acesso</h4>
+                                <h5>Sistema de Frequências</h5>
+                                <div class="divider"></div>
+                                <% if(undefined !== authError){
+                                    %> <p> <%=authError %></p> <% 
+                                } %>
+                        </div>
+                        <div class="row center">
+                            <div class="col s8 offset-s2">
+                                <form action = "/login" method = "POST">
+                                    <div class="input-field">
+                                        <input id="codigo" type="text" class="validate" name="codigo">
+                                        <label for="codigo">Codigo</label>
+                                    </div>
+                        
+                                    <div class="input-field">
+                                            <input id="password" type="password" class="validate" name="password">
+                                            <label for="password">Senha</label>
+                                    </div>
+                                    <!-- Usuário: <input type="text" name="codigo"><br>
+                                    Senha: <input type="password" name="password"><br>-->
+                                    <input type="submit" value="Entrar" class="waves-effect waves-light btn">
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+            </div>
+        </div>
+    </body>
+</html>

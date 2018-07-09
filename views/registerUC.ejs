@@ -1,0 +1,32 @@
+<% include header %>
+    </head>
+    <body class=" grey lighten-2">
+        <% include navBar %>
+        <div class="container white z-depth-2">
+            <div class="row center">
+                <h2 class="header">Cadastrar Unidade Curricular</h2>
+                <div class="divider"></div>
+            </div>
+            <div class="row center">
+                <%if(undefined !== uc){ %>
+                    <form action = "/admin/ucs/edit/ <%=uc[0].iduc %>" method = "POST" class="col s6 offset-s3">
+                        <div class="input-field col s12">
+                                <input id="unidadeCurricular" type="text" class="validate" name="unidadeCurricular" value="<%=uc[0].unidadeCurricular %>">
+                                <label for="unidadeCurricular">Unidade Curricular</label>
+                        </div>
+                        <input type="submit" value="Editar" class="waves-effect waves-light btn">
+                    </form>
+                <%}else{%>
+                    <form action = "/admin/ucs/add" method = "POST" class="col s6 offset-s3">
+                        <div class="input-field col s12">
+                                <input id="unidadeCurricular" type="text" class="validate" name="unidadeCurricular">
+                                <label for="unidadeCurricular">Unidade Curricular</label>
+                        </div>
+                        <input type="submit" value="Cadastrar" class="waves-effect waves-light btn">
+                    </form>
+                <% } %>
+            </div>
+            <br>
+        </div>
+    </body>
+</html>

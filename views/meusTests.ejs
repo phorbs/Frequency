@@ -1,0 +1,90 @@
+<% include header %>
+    </head>
+    <body class=" grey lighten-2">
+        <% include navBar%>
+        <div class="container">
+            <div class="row">
+
+            </div>
+            <div class="row">
+                <% if(inscricoes.length === 0){ %>
+                    <div class="container ">
+                            <div class="row center">
+                                <i class="large material-icons">mood</i>
+                            </div>
+                            <div class ="row center">
+                                <%if(permission === 'A') {%>
+                                    Você ainda não tem testes frequentados.
+                                <%}else if(permission ==='D'){%>
+                                    Não há nenhum teste a ser aplicado.
+                                <%} %>
+                            </div>
+                        </div>
+                <%}else{%>
+                    <ul class="collection with-header center">
+                        <li class="collection-header"><h4>Meus testes</h4></li>
+                        <%if(permission === 'D')
+                        for(var chave in inscricoes){ 
+                            if(inscricoes[chave].estado == 1){%>
+                                <li class="collection-item">
+                                    <div>
+                                        <%=inscricoes[chave].unidadeCurricular + " " + inscricoes[chave].data.substring(0, 10) %>
+                                        <a href="/tests/editar/<%=inscricoes[chave].idprova %>" class="waves-effect waves-light btn">Editar Teste</i></a> 
+                                        <a href="/tests/frequencias/<%=inscricoes[chave].idprova %>" class="waves-effect waves-light btn">Frequências</a> 
+                                        <!--<a href="/tests/cancelar/<%=inscricoes[chave].idprova %>" class="waves-effect waves-light btn red">Cancelar Teste</a> -->
+                                    </div>
+                                </li>
+                            <%}else if(inscricoes[chave].estado == 0){ %>
+                                <li class="collection-item">
+                                    <div>
+                                
+                                        <%=inscricoes[chave].unidadeCurricular + " " + inscricoes[chave].data.substring(0, 10) + "(Finalizado)"%>
+                                        <a href="/tests/editar/<%=inscricoes[chave].idprova %>" class="waves-effect waves-light btn">Editar Teste</a>  
+                                        <a href="/tests/frequencias/<%=inscricoes[chave].idprova %>" class="waves-effect waves-light btn">Frequências</a> 
+                                    </div>
+                                </li>
+                            <%}
+                        }
+                        else if(permission === 'A')
+                            for(var chave in inscricoes){ 
+                                if(inscricoes[chave].presenca == 1){%>
+                                    <li class="collection-item"><%="Unidade Curricular:" +inscricoes[chave].unidadeCurricular + " Data: " + inscricoes[chave].data.substring(0, 10) %> (Inscrição Confirmada)</li>
+                               <%}else{ %>
+                                <li class="collection-item">
+                                        <div class="row">
+                                            <%="Unidade Curricular:" + inscricoes[chave].unidadeCurricular + " Data:" + inscricoes[chave].data.substring(0, 10) %>
+                                            <a href="/inscricao/code/<%=inscricoes[chave].idinscricao %>" class="waves-effect waves-light btn">Validar Inscrição</i></a>  
+                                            <a href="/inscricao/sair/<%=inscricoes[chave].idinscricao %>" class="waves-effect waves-light btn red">Cancelar Inscrição</a>
+                                        </div>
+                                </li>
+                            <%}
+                        }%>
+                    </ul>
+                    </div>
+                <%} %>
+            </div>
+        </div>
+        <!--
+        <h1>Meus Tests</h1>
+        <% if(inscricoes.length === 0){ %>
+            <p>Nao ha testes em andamento!</p>
+        <%}else{
+            if(permission === 'D')
+                for(var chave in inscricoes){ 
+                    if(inscricoes[chave].estado == 1){%>
+                        <li><%=inscricoes[chave].unidadeCurricular + " " + inscricoes[chave].data %><a href="/tests/editar/<%=inscricoes[chave].idprova %>">Editar</a>  // <a href="/tests/cancelar/<%=inscricoes[chave].idprova %>">Cancelar</a></li>
+                    <%}else{ %>
+                        <li><%=inscricoes[chave].unidadeCurricular + " " + inscricoes[chave].data %> - Teste jah aplicado</li>
+                    <%}
+                }
+            else if(permission === 'A')
+                for(var chave in inscricoes){ 
+                    if(inscricoes[chave].estado == 1){%>
+                        <li><%=inscricoes[chave].idinscricao + " " + inscricoes[chave].data %> <a href="/inscricao/code/<%=inscricoes[chave].idinscricao %>">Gerar codigo</a>  // <a href="/inscricao/sair/<%=inscricoes[chave].idinscricao %>">Remover</a></li>
+                    <%}else{ %>
+                        <li><%=inscricoes[chave].unidadeCurricular + " " + inscricoes[chave].data %> - Teste jah aplicado</li>
+                    <%}
+                }
+        } %>-->
+    </body>
+</html>

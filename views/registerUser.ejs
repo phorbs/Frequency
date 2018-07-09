@@ -1,0 +1,55 @@
+<%include header %>
+    <script>
+        $(document).ready(function() {
+            $('select').material_select();
+        });
+    </script>
+    </head>
+    <body class=" grey lighten-2">
+        <% include navBar %>
+        <div class="container white z-depth-2">
+                <div class="row center">
+                    <h2 class="header">Cadastrar Usuários</h2>
+                    <div class="divider"></div>
+                </div>
+                <div class="row center">
+                    <div class="col s10 offset-s1">
+                        <form action = "/admin/users/add" method = "POST">
+                            <div class="input-field col s6">
+                                    <input id="nome" type="text" class="validate" name="nome">
+                                    <label for="nome">Nome</label>
+                            </div>
+                            <div class="input-field col s6">
+                                    <input id="codigo" type="text" class="validate" name="codigo">
+                                    <label for="codigo">Codigo</label>
+                            </div>            
+                            <div class="input-field col s6">
+                                    <input id="email" type="text" class="validate" name="email">
+                                    <label for="email">E-mail</label>
+                            </div>
+                            <div class="input-field col s6">
+                                    <input id="password" type="password" class="validate" name="password">
+                                    <label for="password">Senha</label>
+                            </div>
+                            <div class="divider"></div>
+
+                            <div class="input-field col s6">
+                                    <select name="tipoUsuario">
+                                        <option value="A">Aluno</option>
+                                        <option value="D">Docente</option>
+                                    </select>
+                                    <label>Tipo de Usuário</label>
+                            </div>
+
+                            <div class="input-field col s6">
+                                    <input id="curso" type="text" class="validate" name="curso">
+                                    <label for="curso">Curso</label>
+                            </div>
+                            <div class="col s12">
+                                    <input type="submit" value="Cadastrar" class="waves-effect waves-light btn">
+                            </div>
+                        </form>
+                    </div>
+                </div>
+    </body>
+</html>

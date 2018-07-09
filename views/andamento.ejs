@@ -1,0 +1,29 @@
+    <% include header %>
+    </head>
+    <body class=" grey lighten-2">
+        <% include navBar %>
+        <div class="container">
+            <div class="row">
+                <% if(tests.length === 0){ %>
+                    <p>Nao ha testes em andamento!</p>
+                <%}else{ %>
+                    <ul class="collection with-header center">
+                            <li class="collection-header"><h4>Testes em Andamento</h4></li>
+                   <% if(permission === 'D') 
+                        for(var chave in tests){ 
+                            if(tests[chave].estado == 1){%>
+                            <li class="collection-item"><%= "UC:" +tests[chave].unidadeCurricular + " / Data :" + tests[chave].data.substring(0, 10) %></li>
+                            <%}
+                        }
+                    else if(permission === 'A')
+                        for(var chave in tests){ 
+                            if(tests[chave].estado == 1){%>
+                            <li class="collection-item"><%="UC:" +tests[chave].unidadeCurricular + " / Data :" + tests[chave].data.substring(0, 10) %> <a href="/tests/inscrever/<%=tests[chave].idprova %>"</a>Inscrever</a><br></li>
+                            <%}
+                        }%>
+                    </ul>
+                <%} %>
+            </div>
+        </div>
+    </body>
+</html>

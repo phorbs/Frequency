@@ -1,0 +1,28 @@
+        <%include header%>
+    </head>
+    <body class=" grey lighten-2">
+        <% include navBar %>
+        <div class="container white z-depth-2">
+                <div class="row center">
+                    <h2 class="header">Unidades Curriculares</h2>
+                </div>
+                <div class="row center">
+                    <div class="col s8 offset-s2">
+                            <% if(ucs.length === 0){ %>
+                                <p>Nao ha unidades curriculares cadastradas!</p>
+                            <%}else{ %>
+                                <ul class="collection">
+                                <%for(var chave in ucs){%>
+                                    <li class="collection-item"><%=ucs[chave].iduc + " - " + ucs[chave].unidadeCurricular %>  <a href="/admin/ucs/edit/<%=ucs[chave].iduc %>">Editar</a> <a href="/admin/ucs/remover/<%=ucs[chave].iduc %>">Remover</a></li>
+                                <%} %>
+                                </ul>
+                            <%} %>
+                            <a href="/admin/ucs/add" class="waves-effect waves-light btn">Cadastrar nova</a>
+
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

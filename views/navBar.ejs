@@ -1,0 +1,49 @@
+<% 
+if(permission === 'A'){ %>            
+
+    <ul id="dropdown1" class="dropdown-content">
+        <li><a href="/tests/andamento">Testes em andamento</a></li>
+        <li><a href="/inscricao/meus">Testes inscritos</a></li>
+    </ul>
+
+    <nav class=" blue-grey darken-4">
+        <div class="nav-wrapper">
+            <a href="#!" class="brand-logo">IPS - Frequency</a>
+            <ul class="right hide-on-med-and-down">
+                <!--<li><a class="dropdown-trigger" data-target="dropdown1">Testes<i class="material-icons right">arrow_drop_down</i></a></li>-->
+                <li><a href="/tests/andamento">Testes</a></li>
+                <li><a href="/inscricao/meus">Inscritos</a></li>
+                <li><a href="/tests/frequencias/<%=user.codigo%>">Frequencias</a></li>
+                <li><a href="/logout" class="waves-effect waves-light btn">Sair</a></li>
+        </ul>
+        </div>
+    </nav>
+
+<%}else if(permission ==='D'){%>
+
+    <nav class=" blue-grey darken-4">
+        <div class="nav-wrapper">
+            <a href="#!" class="brand-logo">IPS - Frequency</a>
+            <ul class="right hide-on-med-and-down">
+                <!--<li><a class="dropdown-trigger" data-target="dropdown1">Testes<i class="material-icons right">arrow_drop_down</i></a></li>-->
+                <li><a href="/tests/add">Novo teste</a></li>
+                <li><a href="/tests/andamento">Em andamento</a></li>
+                <li><a href="/tests/meus">Meus Testes</a></li>
+                <li><a href="/logout" class="waves-effect waves-light btn">Sair</a></li>
+            </ul>
+        </div>
+    </nav>
+
+<%}else if(permission === 'EH'){%>
+    <nav class=" blue-grey darken-4">
+        <div class="nav-wrapper">
+            <a href="#!" class="brand-logo">IPS - Frequency</a>
+            <ul class="right hide-on-med-and-down">
+                <!--<li><a class="dropdown-trigger" data-target="dropdown1">Testes<i class="material-icons right">arrow_drop_down</i></a></li>-->
+                <li><a href="/admin/ucs">Unidades Curriculares</a></li>
+                <li><a href="/admin/users/add">Adicionar novo usuario</a></li>
+                <li><a href="/logout" class="waves-effect waves-light btn">Sair</a></li>
+            </ul>
+        </div>
+    </nav>
+<%}%>
